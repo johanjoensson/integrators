@@ -9,10 +9,7 @@ TEST(VerletIntegrator, ConstantFunction0)
     Verlet_integrator<> integrator(0, 0, 1e-3);
     std::vector<double> res;
     for(auto i = 0; i < 1000; i++){
-        res.push_back(integrator.value());
-    }
-    for(auto val : res){
-        ASSERT_DOUBLE_EQ(val, 0);
+        ASSERT_DOUBLE_EQ(integrator.advance(F), 0);
     }
 }
 
@@ -22,10 +19,7 @@ TEST(VerletIntegrator, ConstantFunction5)
     Verlet_integrator<> integrator(5, 5, 1e-3);
     std::vector<double> res;
     for(auto i = 0; i < 1000; i++){
-        res.push_back(integrator.advance(F));
-    }
-    for(auto val : res){
-        ASSERT_DOUBLE_EQ(val, 5);
+        ASSERT_DOUBLE_EQ(integrator.advance(F), 5);
     }
 }
 TEST(VelocityVerletIntegrator, ConstantFunction0)
@@ -34,10 +28,7 @@ TEST(VelocityVerletIntegrator, ConstantFunction0)
     Velocity_Verlet_integrator<> integrator(0, 0, 1e-3);
     std::vector<double> res;
     for(auto i = 0; i < 1000; i++){
-        res.push_back(integrator.advance(F));
-    }
-    for(auto val : res){
-        ASSERT_DOUBLE_EQ(val, 0);
+        ASSERT_DOUBLE_EQ(integrator.advance(F), 0);
     }
 }
 
@@ -47,10 +38,7 @@ TEST(VelocityVerletIntegrator, ConstantFunction5)
     Velocity_Verlet_integrator<> integrator(5, 0, 1e-3);
     std::vector<double> res;
     for(auto i = 0; i < 1000; i++){
-        res.push_back(integrator.advance(F));
-    }
-    for(auto val : res){
-        ASSERT_DOUBLE_EQ(val, 5);
+        ASSERT_DOUBLE_EQ(integrator.advance(F), 5);
     }
 }
 
@@ -60,10 +48,7 @@ TEST(LeapfrogIntegrator, ConstantFunction0)
     Leapfrog_integrator<> integrator(0, 0, 1e-3);
     std::vector<double> res;
     for(auto i = 0; i < 1000; i++){
-        res.push_back(integrator.value());
-    }
-    for(auto val : res){
-        ASSERT_DOUBLE_EQ(val, 0);
+        ASSERT_DOUBLE_EQ(integrator.advance(F), 0);
     }
 }
 
@@ -73,9 +58,6 @@ TEST(LeapfrogIntegrator, ConstantFunction5)
     Leapfrog_integrator<> integrator(5, 5, 1e-3);
     std::vector<double> res;
     for(auto i = 0; i < 1000; i++){
-        res.push_back(integrator.advance(F));
-    }
-    for(auto val : res){
-        ASSERT_DOUBLE_EQ(val, 5);
+        ASSERT_DOUBLE_EQ(integrator.advance(F), 5);
     }
 }

@@ -32,7 +32,7 @@ TEST(VelocityVerletIntegrator, TrigSin)
     os.open("sin_integrated.dat", std::ios::out);
     for(auto i = 0; i < 100000; i++){
         ASSERT_NEAR(integrator.advance(F), std::sin(1e-4*(i + 1)), 1e-8);
-        os << integrator.value() << " " << std::sin(1e-4*(i + 2)) << "\n";
+        os << integrator.position() << " " << std::sin(1e-4*(i + 2)) << "\n";
     }
     os << "\n\n";
     os.close();
@@ -47,7 +47,7 @@ TEST(VelocityVerletIntegrator, TrigCos)
 
     for(auto i = 0; i < 100000; i++){
         ASSERT_NEAR(integrator.advance(F), std::cos(1e-3*(i + 1)), 5e-6) << " i = " << i;
-        os << integrator.value() << " " << std::cos(1e-4*(i + 2)) << "\n";
+        os << integrator.position() << " " << std::cos(1e-4*(i + 2)) << "\n";
     }
     os << "\n\n";
     os.close();
